@@ -1,0 +1,16 @@
+.Item {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.FooterSection
+{
+    text-align: center;
+    border-top: 3px solid blue;
+}
+.FooterTop{
+    display: flex;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}

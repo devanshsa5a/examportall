@@ -1,0 +1,9 @@
+.CartSection{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    padding: 7px;
+    margin-bottom: 40px;
+}
+

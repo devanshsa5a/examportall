@@ -1,0 +1,8 @@
+.Cart{
+    box-shadow: 10px 10px 8px #888888;
+    text-align: center;
+    border: 3px solid lightblue;
+    width: 300px;
+    margin: 8px;
+    padding: 5px;
+}
