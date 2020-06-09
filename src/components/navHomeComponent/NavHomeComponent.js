@@ -4,8 +4,8 @@ import classes from './navhomecomponent.module.css';
 const NavHomeComponent = () => {
     return (
         <div className={classes.Nav}>
-            <div class="logo">
-                <div class="item">
+            <div className="logo">
+                <div className={classes.Item}>
                     <p>BigDataCOE</p>
                 </div>
             </div>

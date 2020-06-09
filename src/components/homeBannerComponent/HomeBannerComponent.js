@@ -1,20 +1,69 @@
 import React from 'react'
 import classes from './homeBannerComponent.module.css';
+import ButtonUi from '../ui/Button/BottonUI';
+import ModelUI from '../ui/Model/ModelUI';
+import LoginComponent from '../loginComponent/LoginComponent';
+import RegisterComponent from '../registerComponent/RegisterComponent';
+import { Link } from 'react-router-dom';
 
-const HomeBannerComponent = () => {
-    return (
-        <div className={classes.Banner}>
-            <div class={classes.BannerContent}>
-                <p>Welcome to the bigdata coe test portal</p>
-                <p>Recruitment Drive 2k20</p>
-                <p>First time walla paste Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sequi repellendus
-            </p>
-                <button>Login</button>
-                <button>Register</button>
+
+class HomeBannerComponent extends React.Component {
+
+    // get the state in more effective way
+    state = {
+        showModel: 0,
+        isLoginModel: 0
+    }
+
+    loginHandler = () => {
+        this.setState((prevState, props) => {
+            return {
+                showModel: prevState.showModel === 0 ? 1 : 0,
+                isLoginModel: 1,
+            }
+        });
+    }
+    registerHandler = () => {
+        this.setState((prevState, props) => {
+            return {
+                showModel: prevState.showModel === 0 ? 1 : 0,
+                isLoginModel: 0,
+            }
+        });
+    }
+    closeBackdrop = () => {
+        this.setState((prevState, props) => {
+            return {
+                showModel: prevState.showModel === 0 ? 1 : 0
+            }
+        });
+    }
+
+
+    render() {
+        const LoginModel = <LoginComponent closeBackdrop={this.closeBackdrop} />;
+        const RegisterModel = <RegisterComponent closeBackdrop={this.closeBackdrop} />;
+        const ModelContent = this.state.isLoginModel ? LoginModel : RegisterModel;
+
+        return (
+            <div className={classes.Banner} >
+
+                {this.state.showModel === 1 ? <ModelUI closeBackdrop={this.closeBackdrop} > {ModelContent}
+                </ModelUI>
+                    : null}
+
+                <div className={classes.BannerContent}>
+                    <p>Welcome to the bigdata coe test portal</p>
+                    <p>Recruitment Drive 2k20</p>
+                    <p>First time walla paste Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sequi repellendus
+                </p>
+                    <ButtonUi name='Login' clicked={this.loginHandler} />
+                    <ButtonUi name='Register' clicked={this.registerHandler} />
+                </div>
+
             </div>
-
-        </div>
-    )
+        )
+    }
 }
 
 export default HomeBannerComponent;
