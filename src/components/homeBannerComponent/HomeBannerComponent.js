@@ -4,7 +4,6 @@ import ButtonUi from '../ui/Button/BottonUI';
 import ModelUI from '../ui/Model/ModelUI';
 import LoginComponent from '../loginComponent/LoginComponent';
 import RegisterComponent from '../registerComponent/RegisterComponent';
-import { Link } from 'react-router-dom';
 
 
 class HomeBannerComponent extends React.Component {
