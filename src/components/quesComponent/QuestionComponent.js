@@ -13,7 +13,8 @@ const QuestionComponent = (props) => {
             <div className={classes.Question}>
                 <p>Question</p>
                 <hr />
-                <p>{props.quesDes}</p>
+                <div dangerouslySetInnerHTML={{ __html: props.quesDes }} />
+                {/* <p>{props.quesDes}</p> */}
                 <option value="1">{props.questionOption1}</option>
                 <option value="1">{props.questionOption2}</option>
                 <option value="1">{props.questionOption3}</option>

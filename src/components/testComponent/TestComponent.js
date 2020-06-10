@@ -55,7 +55,7 @@ class TestComponent extends Component {
                 "questionNo": "3",
             }
         ],
-        currentQuestionDes: "no question here",
+        currentQuestionDes: '<pre style="text-align: left;"><span style="background-color: #eeeeee;">#include &lt;studio.h&gt;<br /></span><span style="background-color: #eeeeee;">using namespace std;<br /></span><span style="background-color: #eeeeee;">int main()<br /></span><span style="background-color: #eeeeee;">{<br /></span><span style="background-color: #eeeeee;"><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp; &nbsp; cout&lt;&lt;"hello word";<br /></span></span><span style="background-color: #eeeeee;">}&nbsp;</span></pre>',
         currentQuestionOption1: "1",
         currentQuestionOption2: "2",
         currentQuestionOption3: "3",
