@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from 'react';
 import classes from './questionNavigator.module.css';
 import QuestionNumberContainer from '../questionNumberContainerComponent/questionNumberContainerComponent';
@@ -24,6 +25,12 @@ const QuestionNavigator = (props) => {
 
         </div>
     )
+}
+
+QuestionNavigator.propTypes = {
+  btn1: PropTypes.string,
+  btn2: PropTypes.string,
+  btn3: PropTypes.string
 }
 
 export default QuestionNavigator;

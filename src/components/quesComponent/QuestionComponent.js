@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from 'react';
 import classes from './questionComponent.module.css';
 
@@ -25,6 +26,14 @@ const QuestionComponent = (props) => {
             </div>
         </div>
     )
+}
+
+QuestionComponent.propTypes = {
+    quesDes: PropTypes.string,
+    questionOption1: PropTypes.string,
+    questionOption2: PropTypes.string,
+    questionOption3: PropTypes.string,
+    questionOption4: PropTypes.string
 }
 
 export default QuestionComponent;

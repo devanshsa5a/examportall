@@ -15,7 +15,7 @@ const FooterComponent = () => {
             </div>
 
             <hr width="70%" />
-            <p>BDCoE &copy; Copywright 2020</p>
+            <p>BDCoE &copy; Copyright 2020</p>
         </div>
     )
 
