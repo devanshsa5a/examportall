@@ -11,7 +11,7 @@ const QuestionNumber = (props) => {
 }
 
 QuestionNumber.propTypes = {
-    no: PropTypes.string
+    no: PropTypes.any
 }
 
 export default QuestionNumber;

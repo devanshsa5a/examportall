@@ -8,11 +8,11 @@ class AdminComponent extends React.Component {
 
     state = {
         signIn: {
-            email: {
+            username: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'email',
-                    placeholder: 'Your E-Mail'
+                    type: 'name',
+                    placeholder: 'Enter the username'
                 },
                 value: '',
                 validation: {
@@ -30,7 +30,9 @@ class AdminComponent extends React.Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    maxLength: 10,
+                    minLength:8
                 },
                 valid: false,
                 touched: false
@@ -78,16 +80,6 @@ class AdminComponent extends React.Component {
             isValid = value.length <= rules.maxLength && isValid
         }
 
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|} ~-]+(?: \.[a - z0 - 9!#$ %& '*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        // if (rules.isNumeric) {
-        //     const pattern = /^\d+$/;
-        //     isValid = pattern.test(value) && isValid
-        // }
-
         return isValid;
     }
 
@@ -100,9 +92,14 @@ class AdminComponent extends React.Component {
             loading: true
         })
         event.preventDefault();
+        console.log(this.state.signIn.username.value);
+        // let data = {
+        //     "username": "User",
+        //     "password": "bSakshaMdc"
+        // }
         let data = {
-            "username": "User",
-            "password": "bSakshaMdc"
+            "username" : this.state.signIn.username.value,
+            "password" : this.state.signIn.password.value
         }
         axios.post('https://saksham20.herokuapp.com/auth', data).then(res => {
             this.setState({
