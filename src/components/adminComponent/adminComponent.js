@@ -1,7 +1,8 @@
 import React from 'react'
-// import classes from './adminComponent.module.css';
+import classes from './adminComponent.module.css';
 import Input from '../ui/Input/Input';
 import Button from '../ui/Button/BottonUI';
+import axios from 'axios';
 
 class AdminComponent extends React.Component {
 
@@ -91,6 +92,28 @@ class AdminComponent extends React.Component {
     }
 
 
+    // componentDidMount = () => {
+    //     console.log('mounted');
+    // }
+    signInHandler = (event) => {
+        this.setState({
+            loading: true
+        })
+        event.preventDefault();
+        let data = {
+            "username": "User",
+            "password": "bSakshaMdc"
+        }
+        axios.post('https://saksham20.herokuapp.com/auth', data).then(res => {
+            this.setState({
+                loading: false
+            })
+            console.log(res.data.token);
+        }).catch(errr => {
+            console.log(errr);
+        })
+    }
+
     render() {
         const formElementsArray = [];
         for (let key in this.state.signIn) {
@@ -101,7 +124,7 @@ class AdminComponent extends React.Component {
         }
 
         let form = (
-            <form onSubmit={this.orderHandler}>
+            <form onSubmit={this.signInHandler}>
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}
@@ -116,9 +139,12 @@ class AdminComponent extends React.Component {
                 <Button name='SignIn'></Button>
             </form>
         );
+        if (this.state.loading) {
+            form = (<p>Loading... </p>)
+        }
 
         return (
-            <div>
+            <div className={classes.Container}>
                 <h1> Admin signIn</h1>
                 {form}
             </div>

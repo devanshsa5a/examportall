@@ -7,10 +7,12 @@
     display: grid;
     align-content: center;
     justify-content: center;
+    padding: 10px;
 }
 .Item{
     margin: 5px;
     font-size: 20px;
+    align-items: center;
 }
 .Cancelbtn{
     margin: 10px;
