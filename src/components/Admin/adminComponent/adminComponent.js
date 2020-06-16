@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './adminComponent.module.css';
-import Input from '../ui/Input/Input';
-import Button from '../ui/Button/BottonUI';
+import Input from '../../ui/Input/Input';
+import Button from '../../ui/Button/BottonUI';
 import axios from 'axios';
 
 class AdminComponent extends React.Component {

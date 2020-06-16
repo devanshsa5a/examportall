@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from 'react';
 import classes from "./login.module.css"
-import Button from '../ui/Button/BottonUI';
-import Input from '../ui/Input/Input';
+import Button from '../../ui/Button/BottonUI';
+import Input from '../../ui/Input/Input';
 import { Redirect } from 'react-router-dom';
 // import {Browser} from ''
 import axios from 'axios';

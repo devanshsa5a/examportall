@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from 'react';
-import ButtonUi from '../ui/Button/BottonUI';
+import ButtonUi from '../../ui/Button/BottonUI';
 import { Link } from 'react-router-dom';
 
 const RegisterComponent = (props) => {

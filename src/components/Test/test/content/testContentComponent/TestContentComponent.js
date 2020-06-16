@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from 'react';
 import classes from './testContentComponent.module.css';
 import QuestionComponent from '../quesComponent/QuestionComponent';
-import QuestionNavigator from '../questionNavigatorComponent/QuestionNavigatorComponent';
+import QuestionNavigator from '../../navigator/questionNavigatorComponent/QuestionNavigatorComponent';
 
 const TestContentComponent = (props) => {
     return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import NavHomeComponent from '../navHomeComponent/NavHomeComponent';
 import HomeBannerComponent from '../homeBannerComponent/HomeBannerComponent';
-import CartComponent from '../cartComponent/CartComponent';
-import FooterComponent from '../footerComponent/FooterComponent';
+import CartComponent from '../cart/cartComponent/CartComponent';
+import FooterComponent from '../footer/footerComponent/FooterComponent';
 
 const DashBoardComponent = () => {
     return (

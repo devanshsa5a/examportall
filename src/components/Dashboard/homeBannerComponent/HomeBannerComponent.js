@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './homeBannerComponent.module.css';
-import ButtonUi from '../ui/Button/BottonUI';
-import ModelUI from '../ui/Model/ModelUI';
+import ButtonUi from '../../ui/Button/BottonUI';
+import ModelUI from '../../ui/Model/ModelUI';
 import LoginComponent from '../loginComponent/LoginComponent';
 import RegisterComponent from '../registerComponent/RegisterComponent';
 

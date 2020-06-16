@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import DashBoardComponent from './components/dashboardComponent/DashBoardComponent';
-import TestComponent from './components/testComponent/TestComponent';
-import AdminComponent from './components/adminComponent/adminComponent';
+import DashBoardComponent from './components/Dashboard/dashboardComponent/DashBoardComponent';
+import TestComponent from './components/Test/testComponent/TestComponent';
+import AdminComponent from './components/Admin/adminComponent/adminComponent';
 
 function App() {
   return (

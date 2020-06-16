@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import TestNavComponent from '../navTestComponent/NavTestComponent';
-import TestContentComponent from '../testContentComponent/TestContentComponent';
-import ButtonUI from '../ui/Button/BottonUI';
+import TestNavComponent from '../nav/navTestComponent/NavTestComponent';
+import TestContentComponent from '../test/content/testContentComponent/TestContentComponent';
+import ButtonUI from '../../ui/Button/BottonUI';
 
 class TestComponent extends Component {
     state = {
