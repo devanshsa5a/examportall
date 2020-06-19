@@ -5,15 +5,21 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import questionReducer from './store/reducer/question';
+import getQuestionReducer from './store/reducer/getQuestion';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(questionReducer, composeEnhancers(
+const rootReducer = combineReducers({
+  quesNo: questionReducer,
+  questBase: getQuestionReducer
+});
+
+const store = createStore(rootReducer, composeEnhancers(
   applyMiddleware(thunk)
 ));
 

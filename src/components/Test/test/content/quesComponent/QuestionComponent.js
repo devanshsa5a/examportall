@@ -29,11 +29,11 @@ class QuestionComponent extends Component {
 
 const mapStateToProps = state => {
     return {
-        des: state.currentQuestionDes,
-        o1: state.currentQuestionOption1,
-        o2: state.currentQuestionOption2,
-        o3: state.currentQuestionOption3,
-        o4: state.currentQuestionOption4,
+        des: state.quesNo.currentQuestionDes,
+        o1: state.quesNo.currentQuestionOption1,
+        o2: state.quesNo.currentQuestionOption2,
+        o3: state.quesNo.currentQuestionOption3,
+        o4: state.quesNo.currentQuestionOption4,
     }
 };
 
