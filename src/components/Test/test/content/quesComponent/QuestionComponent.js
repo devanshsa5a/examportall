@@ -1,30 +1,29 @@
 import PropTypes from "prop-types";
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import classes from './questionComponent.module.css';
 
 
 
-class QuestionComponent extends Component {
-    render() {
-        return (
-            <div>
-                <div className={classes.Question}>
-                    <p>Question</p>
-                    <hr />
-                    <div dangerouslySetInnerHTML={{ __html: this.props.des }} />
-                    {/* <p>{props.quesDes}</p> */}
-                    <option value="1">{this.props.o1}</option>
-                    <option value="1">{this.props.o2}</option>
-                    <option value="1">{this.props.o3}</option>
-                    <option value="1">{this.props.o4}</option>
-                    <button>Save for Later</button>
-                    <button>Save</button>
-                    <button>Clear ans</button>
-                </div>
-            </div >
-        )
-    }
+const QuestionComponent = () => {
+    return (
+        <div>
+            <div className={classes.Question}>
+                <p>Question</p>
+                <hr />
+                <div dangerouslySetInnerHTML={{ __html: this.props.des }} />
+                {/* <p>{props.quesDes}</p> */}
+                <option value="1">{this.props.o1}</option>
+                <option value="1">{this.props.o2}</option>
+                <option value="1">{this.props.o3}</option>
+                <option value="1">{this.props.o4}</option>
+                <button>Save for Later</button>
+                <button>Save</button>
+                <button>Clear ans</button>
+            </div>
+        </div >
+    )
+
 }
 
 const mapStateToProps = state => {
