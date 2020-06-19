@@ -10,7 +10,7 @@ class NavTestComponent extends Component {
     }
     componentDidMount() {
         var hours = 0;
-        var minutes = 0;
+        var minutes = 5;
         var seconds = 5;
 
         if (localStorage.getItem("flag")) {

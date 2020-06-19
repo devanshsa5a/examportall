@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import TestNavComponent from '../nav/navTestComponent/NavTestComponent';
 import TestContentComponent from '../test/content/testContentComponent/TestContentComponent';
 import ButtonUI from '../../ui/Button/BottonUI';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../../store/action/actionTypes';
+
 
 class TestComponent extends Component {
     state = {
@@ -54,29 +57,25 @@ class TestComponent extends Component {
                 "questionOption": ["1", "2", "3", "4"],
                 "questionNo": "3",
             }
-        ],
-        currentQuestionDes: '<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;bits/stdc++.h&gt;</span><br /> using namespace std;<br /> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>()<br /> {<br />     <span style="color: #888888">// using time http://hilite.me/</span><br />     <span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">7</span>;<br />     string s <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;<br />     <span style="color: #008800; font-weight: bold">while</span> (i<span style="color: #333333">--</span>)<br />     {<br />         string t;<br />         getline(cin, t);<br />         s <span style="color: #333333">=</span> s <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;&lt;br /&gt; &quot;</span> <span style="color: #333333">+</span> t;<br />     }<br />     cout <span style="color: #333333">&lt;&lt;</span> s;<br /> }<br /> </pre></div>',
-        currentQuestionOption1: "1",
-        currentQuestionOption2: "2",
-        currentQuestionOption3: "3",
-        currentQuestionOption4: "4",
-        currentQuestionType: "-1",
-        currentQuestionNo: "-1"
+        ]
     }
 
     questionChanger = (quesDetail) => {
-        this.setState({
-            currentQuestionDes: quesDetail.questionDesc,
-            currentQuestionOption1: quesDetail.questionOption[0],
-            currentQuestionOption2: quesDetail.questionOption[1],
-            currentQuestionOption3: quesDetail.questionOption[2],
-            currentQuestionOption4: quesDetail.questionOption[3],
-            currentQuestionType: quesDetail.questionType,
-            currentQuestionNo: quesDetail.questionNo,
-        })
-        console.log(this.state);
+        let payload = {
+            'Description': quesDetail.questionDesc,
+            'Option1': quesDetail.questionOption[0],
+            'Option2': quesDetail.questionOption[1],
+            'Option3': quesDetail.questionOption[2],
+            'Option4': quesDetail.questionOption[3],
+            'QuestionType': quesDetail.questionType,
+            'QuestionNo': quesDetail.questionNo,
+        }
+        this.props.onButton(payload);
     }
 
+    componentDidMount = () => {
+        this.props.onInnit();
+    }
 
     render() {
         const response = this.state.data;
@@ -112,10 +111,17 @@ class TestComponent extends Component {
         return (
             <React.Fragment>
                 <TestNavComponent />
-                <TestContentComponent btn1={c} btn2={java} btn3={python} quesDes={this.state.currentQuestionDes} questionOption1={this.state.currentQuestionOption1} questionOption2={this.state.currentQuestionOption2} questionOption3={this.state.currentQuestionOption3} questionOption4={this.state.currentQuestionOption4} />
+                <TestContentComponent btn1={c} btn2={java} btn3={python} />
             </React.Fragment >
         )
     }
 }
 
-export default TestComponent;
+const mapDispatchToProps = dispatch => {
+    return {
+        onInnit: () => dispatch({ type: actionTypes.INIT_QUESTION }),
+        onButton: (payload) => dispatch({ type: actionTypes.QUES_CHANGER, payload: payload })
+    };
+};
+
+export default connect(null, mapDispatchToProps)(TestComponent);
