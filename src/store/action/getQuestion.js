@@ -66,9 +66,18 @@ export const quesChanger = (payload) => {
 }
 
 
+
+export const final = (msg) => {
+    return {
+        type: actionTypes.RES_FINAL,
+        msg: msg
+    }
+}
+
+
 export const ansSubmiter = (response) => {
     return dispatch => {
-        console.log(response)
+        dispatch(final('Wait summit ans'));
         let data = {
             "questionNo": response.questionNo,
             "questionType": response.questionType,
@@ -78,13 +87,13 @@ export const ansSubmiter = (response) => {
             .then(res => {
                 if (res.data.response === "successfully saved ")
                 {
-                    console.log('done')
+                    dispatch(final('Response is Saved'));
                 }else{
-                    console.log('try again')
+                    dispatch(final('Try Again'));
                 }
             })
             .catch(err => {
-                console.log('try again');
+                dispatch(final('Try Again'));
             })
     }
 }

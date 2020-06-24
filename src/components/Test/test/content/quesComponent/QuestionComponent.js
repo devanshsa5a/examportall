@@ -41,6 +41,7 @@ class QuestionComponent extends Component {
                 <input type="radio" id="option4" name="option" value="4" onClick={this.optionHandler} />
                 <label htmlFor="option4">{this.props.o4}</label>
                 <br />
+                {this.props.msg}
                 <br />
                 <Button name='Submit this Answer' clicked={this.ansHandler} />
                 <button>Save For Later</button>
@@ -70,6 +71,7 @@ const mapStateToProps = state => {
         o4: state.quesNo.currentQuestionOption4,
         questionType: state.quesNo.currentQuestionType,
         questionNo: state.quesNo.currentQuestionNo,
+        msg: state.quesNo.msg
     }
 };
 
