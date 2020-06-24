@@ -8,6 +8,7 @@ const initialState = {
     currentQuestionOption4: null,
     currentQuestionType: null,
     currentQuestionNo: null,
+    currentQuestionCode: null,
     msg: null
 };
 
@@ -28,6 +29,7 @@ const reducer = (state = initialState, action) => {
                 currentQuestionOption4: action.payload.Option4,
                 currentQuestionNo: action.payload.QuestionNo.toString(),
                 currentQuestionType: action.payload.QuestionType,
+                currentQuestionCode: action.payload.QuestionCode,
                 msg: null
             };
         case actionTypes.RES_FINAL:

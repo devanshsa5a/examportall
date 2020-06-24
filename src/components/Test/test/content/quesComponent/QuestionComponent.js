@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import classes from './questionComponent.module.css';
 import * as getActions from '../../../../../store/action/getQuestion';
 import Button from '../../../../ui/Button/BottonUI';
+import parse from 'html-react-parser'
 
 class QuestionComponent extends Component {
     state = {
@@ -32,6 +33,7 @@ class QuestionComponent extends Component {
         } else {
             content = (<div>
                 <p> {this.props.des}</p>
+                {parse(this.props.code)}
                 <input type="radio" id="option1" name="option" value="1" onClick={this.optionHandler} />
                 <label htmlFor="option1">{this.props.o1}</label><br />
                 <input type="radio" id="option2" name="option" value="2" onClick={this.optionHandler} />
@@ -71,7 +73,8 @@ const mapStateToProps = state => {
         o4: state.quesNo.currentQuestionOption4,
         questionType: state.quesNo.currentQuestionType,
         questionNo: state.quesNo.currentQuestionNo,
-        msg: state.quesNo.msg
+        msg: state.quesNo.msg,
+        code: state.quesNo.currentQuestionCode
     }
 };
 

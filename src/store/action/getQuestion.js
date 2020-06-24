@@ -46,6 +46,7 @@ export const getQuestion = (response) => {
             }
         }// end of for loop
         dispatch(getQuest(c, java, python));
+        // console.log(c)
     }
 }
 

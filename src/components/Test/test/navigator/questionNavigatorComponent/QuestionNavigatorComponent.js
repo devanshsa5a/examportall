@@ -17,6 +17,7 @@ class QuestionNavigator extends Component {
             'Option4': quesDetail.questionOptions[3],
             'QuestionType': quesDetail.questionType,
             'QuestionNo': quesDetail.questionNo,
+            'QuestionCode': quesDetail.questionCode,
         }
         this.props.onButton(payload);
     }
