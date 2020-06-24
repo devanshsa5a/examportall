@@ -1,57 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-const responsedata = [
-    {
-        "questionType": "1",
-        "questionDesc": "what is question 1?",
-        "questionOption": ["1", "2", "3", "4"],
-        "questionNo": "1",
-    },
-    {
-        "questionType": "2",
-        "questionDesc": "what is question 1 type 2?",
-        "questionOption": ["1", "2", "3", "4"],
-        "questionNo": "1",
-    },
-    {
-        "questionType": "3",
-        "questionDesc": "what is question 1 type 3?",
-        "questionOption": ["1", "2", "3", "4"],
-        "questionNo": "1",
-    },
-    {
-        "questionType": "1",
-        "questionDesc": "what is question 2?",
-        "questionOption": ["1", "2", "3", "4"],
-        "questionNo": "2",
-    },
-    {
-        "questionType": "1",
-        "questionDesc": "what is question 3?",
-        "questionOption": ["1", "2", "3", "4"],
-        "questionNo": "3",
-    },
-    {
-        "questionType": "2",
-        "questionDesc": "what is question 2 type 2?",
-        "questionOption": ["1", "2", "3", "4"],
-        "questionNo": "2",
-    },
-    {
-        "questionType": "3",
-        "questionDesc": "what is question 2 typ 3?",
-        "questionOption": ["1", "2", "3", "4"],
-        "questionNo": "2",
-    },
-    {
-        "questionType": "3",
-        "questionDesc": "what is question 3 type 3?",
-        "questionOption": ["1", "2", "3", "4"],
-        "questionNo": "3",
-    }
-];
-
 
 export const getQuest = (c, java, python) => {
     return {
@@ -85,8 +34,17 @@ export const getQuestion = (response) => {
             }
         }// end of for loop
         dispatch(getQuest(c, java, python));
+       
     }
 
+}
+
+
+export const quesChanger = (payload) => {
+    return {
+        type: actionTypes.QUES_CHANGER,
+        payload: payload
+    }
 }
 
 export const baseQuestion = () => {
@@ -96,19 +54,27 @@ export const baseQuestion = () => {
 }
 
 export const initTest = () => {
-    return dispatch => {
+    return async dispatch => {
         let config = {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem("tokenStudent")}`,
             }
         }
+        // await setTimeout(() => {
+        // 
+        //     console.log('hello');
+        // }, 10000)
         axios.get('https://bdcoe-api.herokuapp.com/questions/', config).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
+            let responsedata = res.data;
+            console.log(responsedata.data)
+            dispatch(getQuestion(responsedata.data));
+            dispatch(baseQuestion());
         }).catch(err => {
             console.log(err);
         })
-        dispatch(getQuestion(responsedata));
-        dispatch(baseQuestion());
+
+
     }
     // fetch the question
     // slip the question in sections

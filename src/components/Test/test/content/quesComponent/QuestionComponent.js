@@ -10,21 +10,28 @@ class QuestionComponent extends Component {
         this.props.onInnit();
     }
     render() {
-       
+        let content
+        if (this.props.o1 === null) {
+            content = <p>No question selected </p>
+        } else {
+            content = (<div>
+                <p> {this.props.des}</p>
+                <option value="1">{this.props.o1}</option>
+                <option value="2">{this.props.o2}</option>
+                <option value="3">{this.props.o3}</option>
+                <option value="4">{this.props.o4}</option>
+                <button>Save for Later</button>
+                <button>Save</button>
+                <button>Clear ans</button> </div>)
+        }
+
         return (
             <div>
                 <div className={classes.Question}>
                     <p>Question</p>
                     <hr />
-                    <div dangerouslySetInnerHTML={{ __html: this.props.des }} />
-                    {/* <p>{props.quesDes}</p> */}
-                    <option value="1">{this.props.o1}</option>
-                    <option value="1">{this.props.o2}</option>
-                    <option value="1">{this.props.o3}</option>
-                    <option value="1">{this.props.o4}</option>
-                    <button>Save for Later</button>
-                    <button>Save</button>
-                    <button>Clear ans</button>
+                    {content}
+
                 </div>
             </div >
         )

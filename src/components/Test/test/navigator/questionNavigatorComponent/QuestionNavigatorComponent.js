@@ -4,16 +4,17 @@ import QuestionNumberContainer from '../questionNumberContainerComponent/questio
 import Button from '../../../../ui/Button/BottonUI';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../../../../store/action/actionTypes';
+import * as getActions from '../../../../../store/action/getQuestion'
 
 class QuestionNavigator extends Component {
 
     questionChanger = (quesDetail) => {
         let payload = {
             'Description': quesDetail.questionDesc,
-            'Option1': quesDetail.questionOption[0],
-            'Option2': quesDetail.questionOption[1],
-            'Option3': quesDetail.questionOption[2],
-            'Option4': quesDetail.questionOption[3],
+            'Option1': quesDetail.questionOptions[0],
+            'Option2': quesDetail.questionOptions[1],
+            'Option3': quesDetail.questionOptions[2],
+            'Option4': quesDetail.questionOptions[3],
             'QuestionType': quesDetail.questionType,
             'QuestionNo': quesDetail.questionNo,
         }
@@ -38,22 +39,25 @@ class QuestionNavigator extends Component {
                 return <Button key={ques.key} name={ques.name} clicked={() => this.questionChanger(ques.funcInput)} />
             })
         }
-        return (
-            <div className={classes.QuestionNavigator} >
-                <p>Navigator</p>
-                <p>Apti</p>
-                <QuestionNumberContainer />
+        let content
+        if (c === null) {
+            content = 'Loading your navigator'
+        } else {
+            content = (<React.Fragment>
                 <p>C</p>
-                <p>
-                    {c}
-                </p>
-                < p > java</p >
+                <p>{c}</p>
+                <p> java</p>
                 {java}
                 <p>python</p>
                 {python}
-                {/* <p>Algo</p>
-                <p>WEB/APP</p> */}
-
+            </React.Fragment>)
+        }
+        return (
+            <div className={classes.QuestionNavigator} >
+                {/* <p>Apti</p>
+                <QuestionNumberContainer /> */}
+                <p>Navigator</p>
+                {content}
             </div >
         )
     }
@@ -68,7 +72,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onButton: (payload) => dispatch({ type: actionTypes.QUES_CHANGER, payload: payload }),
+        onButton: (payload) => dispatch(getActions.quesChanger(payload)),
     };
 };
 
