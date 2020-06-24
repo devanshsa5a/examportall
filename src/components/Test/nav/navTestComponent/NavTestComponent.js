@@ -27,9 +27,9 @@ class NavTestComponent extends Component {
                 redirect: <Redirect to="/End" />
             })
         } else {
-            let t = setInterval(() => {
+            this.t = setInterval(() => {
                 if (hours < 0) {
-                    clearInterval(t);
+                    clearInterval(this.t);
                 }
                 if (seconds > 0) {
                     seconds = seconds - 1;
@@ -39,7 +39,7 @@ class NavTestComponent extends Component {
                     if (minutes - 1 === -1) {
                         hours = hours - 1;
                         if (hours < 0) {
-                            clearInterval(t);
+                            clearInterval(this.t);
                             this.setState({
                                 redirect: <Redirect to="/End" />
                             })
@@ -55,20 +55,20 @@ class NavTestComponent extends Component {
                     })
                 }
                 else if (minutes < 10 && seconds < 10) {
-    
+
                     this.setState({
                         timer: "0" + hours + " : 0" + minutes + " : 0" + seconds
                     })
                 }
                 else if (minutes < 10) {
-    
+
                     this.setState({
                         timer:
                             "0" + hours + " : 0" + minutes + " : " + seconds
                     })
                 }
                 else if (seconds < 10) {
-    
+
                     this.setState({
                         timer:
                             "0" + hours + " : " + minutes + " : 0" + seconds
@@ -83,8 +83,16 @@ class NavTestComponent extends Component {
 
 
     render() {
+        let redirect = null;
+        if (localStorage.getItem('tokenStudent')) {
+            redirect = null;
+        } else {
+            clearInterval(this.t);
+            redirect = (<Redirect to="/Dashboard" />)
+        }
         return (
             <div className={classes.Nav}>
+                {redirect}
                 {this.state.redirect}
                 <div className={classes.Logo}>
                     <div className={classes.Item}>

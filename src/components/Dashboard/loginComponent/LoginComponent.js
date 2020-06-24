@@ -5,12 +5,20 @@ import Button from '../../ui/Button/BottonUI';
 import Input from '../../ui/Input/Input';
 import { Redirect } from 'react-router-dom';
 // import {Browser} from ''
+
+
+/**
+ * my credentila for testing
+ * 1910070
+ * ripudaman
+ */
+
 import axios from 'axios';
 
 class LoginComponent extends React.Component {
     state = {
         Login: {
-            studentNo: {
+            rollNo: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'name',
@@ -42,7 +50,8 @@ class LoginComponent extends React.Component {
         },
         formIsValid: false,
         loading: false,
-        redirect: null
+        redirect: null,
+        msg: null,
     }
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedLogInForm = {
@@ -89,26 +98,34 @@ class LoginComponent extends React.Component {
         })
         event.preventDefault();
         // console.log(this.state.signIn.username.value);
+        let config = {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("tokenAdmin")}`,
+            }
+        }
 
         let data = {
-            "username": this.state.Login.studentNo.value,
+            "rollNo": this.state.Login.rollNo.value,
             "password": this.state.Login.password.value
         }
-        axios.post('https://saksham20.herokuapp.com/auth', data).then(res => {
+        axios.post('https://bdcoe-api.herokuapp.com/login/', data, config).then(res => {
             this.setState({
                 loading: false
             })
-            let token = res.data.token
-            if (token !== null && token !== 'failed')
-            {
-                console.log('Login is right');
-                console.log( this.props.history)
-                this.setState({redirect : (<Redirect to="/Test"/>)})
-            }else{
-                console.log('Login is wrong');
+            if (res.data.token) {
+                let token = res.data.token
+                localStorage.setItem("tokenStudent", token);
+                this.setState({
+                    redirect: (<Redirect to="/Test" />)
+                })
+
             }
         }).catch(errr => {
-            console.log(errr);
+            this.setState({
+                loading: false,
+                msg: 'login failed'
+            })
+            console.log('some error');
         })
     }
 
@@ -123,6 +140,7 @@ class LoginComponent extends React.Component {
 
         let form = (
             <form onSubmit={this.LogInHandler}>
+                {this.state.msg}
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}

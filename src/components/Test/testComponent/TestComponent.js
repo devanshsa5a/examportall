@@ -1,30 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TestNavComponent from '../nav/navTestComponent/NavTestComponent';
 import TestContentComponent from '../test/content/testContentComponent/TestContentComponent';
-import { connect } from 'react-redux';
-import * as getActions from '../../../store/action/getQuestion';
 
 
-class TestComponent extends Component {
 
-    componentDidMount = () => {
-        this.props.onInnit();
-    }
+const TestComponent = () => {
+    return (
+        <React.Fragment>
+            <TestNavComponent />
+            <TestContentComponent />
+        </React.Fragment >
+    )
 
-    render() {
-        return (
-            <React.Fragment>
-                <TestNavComponent />
-                <TestContentComponent />
-            </React.Fragment >
-        )
-    }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onInnit: () => dispatch(getActions.initTest()),
-    };
-};
-
-export default connect(null, mapDispatchToProps)(TestComponent);
+export default TestComponent;

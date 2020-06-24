@@ -3,9 +3,9 @@ import classes from './adminComponent.module.css';
 import Input from '../../ui/Input/Input';
 import Button from '../../ui/Button/BottonUI';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class AdminComponent extends React.Component {
-
     state = {
         signIn: {
             username: {
@@ -32,14 +32,15 @@ class AdminComponent extends React.Component {
                 validation: {
                     required: true,
                     maxLength: 10,
-                    minLength:8
+                    minLength: 8
                 },
                 valid: false,
                 touched: false
             }
         },
         formIsValid: false,
-        loading: false
+        loading: false,
+        redirect: null
     }
 
     inputChangedHandler = (event, inputIdentifier) => {
@@ -67,7 +68,6 @@ class AdminComponent extends React.Component {
         if (!rules) {
             return true;
         }
-
         if (rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
@@ -79,36 +79,38 @@ class AdminComponent extends React.Component {
         if (rules.maxLength) {
             isValid = value.length <= rules.maxLength && isValid
         }
-
         return isValid;
     }
 
 
-    // componentDidMount = () => {
-    //     console.log('mounted');
-    // }
     signInHandler = (event) => {
         this.setState({
             loading: true
         })
         event.preventDefault();
-        console.log(this.state.signIn.username.value);
-        // let data = {
-        //     "username": "User",
-        //     "password": "bSakshaMdc"
-        // }
         let data = {
-            "username" : this.state.signIn.username.value,
-            "password" : this.state.signIn.password.value
+            "username": this.state.signIn.username.value,
+            "password": this.state.signIn.password.value
         }
-        axios.post('https://saksham20.herokuapp.com/auth', data).then(res => {
+        axios.post('https://bdcoe-api.herokuapp.com/adminapi/', data).then(res => {
             this.setState({
                 loading: false
             })
-            console.log(res.data.token);
-        }).catch(errr => {
-            console.log(errr);
+            // console.log(res.data);
+            if (res.data.token) {
+                localStorage.setItem("tokenAdmin", res.data.token);
+                this.setState({
+                    redirect:
+                        <Redirect to="/Dashboard" />
+                })
+            }
         })
+            .catch(err => {
+                this.setState({
+                    loading: false
+                })
+                console.log('Handle the err msg here');
+            })
     }
 
     render() {
@@ -139,9 +141,13 @@ class AdminComponent extends React.Component {
         if (this.state.loading) {
             form = (<p>Loading... </p>)
         }
+        if (localStorage.getItem('tokenAdmin') && this.state.redirect === null) {
+            form = <Redirect to="/Dashboard" />
+        }
 
         return (
             <div className={classes.Container}>
+                {this.state.redirect}
                 <h1> Admin signIn</h1>
                 {form}
             </div>

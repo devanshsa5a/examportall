@@ -8,11 +8,11 @@ import Button from '../../ui/Button/BottonUI';
 class RegisterComponent extends React.Component {
     state = {
         Register: {
-            heading: {
+            firstName: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'name',
-                    placeholder: 'Enter the heading'
+                    placeholder: 'Enter the Fisrt Name'
                 },
                 value: '',
                 validation: {
@@ -21,11 +21,23 @@ class RegisterComponent extends React.Component {
                 valid: false,
                 touched: false
             },
-            team: {
+            lastName: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'name',
-                    placeholder: 'Match Between'
+                    placeholder: 'Enter the Last Name'
+                },
+                value: '',
+                validation: {
+                },
+                valid: false,
+                touched: false
+            },
+            studentNumber: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'name',
+                    placeholder: "Enter the Student Number"
                 },
                 value: '',
                 validation: {
@@ -34,11 +46,11 @@ class RegisterComponent extends React.Component {
                 valid: false,
                 touched: false
             },
-            image: {
+            email: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'name',
-                    placeholder: 'paste the img url'
+                    placeholder: 'Enter the Email'
                 },
                 value: '',
                 validation: {
@@ -47,11 +59,37 @@ class RegisterComponent extends React.Component {
                 valid: false,
                 touched: false
             },
-            desciption: {
+            branch: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'name',
-                    placeholder: 'Enter the desciption here'
+                    placeholder: 'Enter the Branch 1 or 2'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false
+            },
+            password: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'name',
+                    placeholder: 'Enter the password'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false
+            },
+            confirmPassword: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'name',
+                    placeholder: 'Comfirm the passwordd'
                 },
                 value: '',
                 validation: {
@@ -64,7 +102,8 @@ class RegisterComponent extends React.Component {
         },
         formIsValid: false,
         loading: false,
-        redirect: null
+        redirect: null,
+        msg: null,
     }
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedRegisterForm = {
@@ -105,27 +144,36 @@ class RegisterComponent extends React.Component {
         event.preventDefault();
         let config = {
             headers: {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjVlZGZjMjJjYjgwZTExOTllNTU4NDE4ZSIsInVzZXJuYW1lIjoiVXNlciIsInBhc3N3b3JkIjoiYlNha3NoYU1kYyJ9LCJpYXQiOjE1OTIzMzUyMjUsImV4cCI6MTU5MjMzODgyNX0.ZsphyxU-79bodndEvtsK6Dth8LLeX1JL27CSLmOxYYI',
+                'Authorization': `Bearer ${localStorage.getItem("tokenAdmin")}`,
             }
         }
         let data = {
-            "heading": "TEAM BDCOE LAUNCHES THE SAKSHAM APP",
-            "team": "IT vs CSE",
-            "image": "https://tineye.com/images/widgets/mona.jpg",
-            "description": "Match is won by IT"
+            "first_name": this.state.Register.firstName.value,
+            "last_name": this.state.Register.lastName.value,
+            "student_number": this.state.Register.studentNumber.value,
+            "email": this.state.Register.email.value,
+            "branch": this.state.Register.branch.value,
+            "password": this.state.Register.password.value,
+            "password2": this.state.Register.confirmPassword.value
         }
-        axios.post('https://saksham20.herokuapp.com/cards', data, config).then(res => {
+        axios.post('https://bdcoe-api.herokuapp.com/register/', data, config).then(res => {
             this.setState({
                 loading: false
             })
-            if (res.data === 'done') {
+            console.log(res.data);
+            if (res.data.response === 'successfully registered new user') {
                 console.log('done register');
                 this.setState({
-                    redirect: <Redirect to='/Dashboard' />
+                    msg: 'Register done'
                 })
 
             } else
-                console.log(`${res.data.data}`);
+            {
+                console.log(`${res.data}`);
+                this.setState({
+                    msg: 'Registered Failed'
+                })
+            }
         }).catch(err => {
             this.setState({
                 loading: false
@@ -145,6 +193,7 @@ class RegisterComponent extends React.Component {
 
         let form = (
             <form onSubmit={this.registerHandler}>
+                {this.state.msg}
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}
