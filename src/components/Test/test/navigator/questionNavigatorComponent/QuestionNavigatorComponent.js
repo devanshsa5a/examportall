@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import classes from './questionNavigator.module.css';
-import QuestionNumberContainer from '../questionNumberContainerComponent/questionNumberContainerComponent';
+// import QuestionNumberContainer from '../questionNumberContainerComponent/questionNumberContainerComponent';
 import Button from '../../../../ui/Button/BottonUI';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../../../../store/action/actionTypes';
+// import * as actionTypes from '../../../../../store/action/actionTypes';
 import * as getActions from '../../../../../store/action/getQuestion'
 
 class QuestionNavigator extends Component {

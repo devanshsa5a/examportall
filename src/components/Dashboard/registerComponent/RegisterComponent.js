@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import Input from '../../ui/Input/Input';
 import Button from '../../ui/Button/BottonUI';
 

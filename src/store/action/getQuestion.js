@@ -1,15 +1,27 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+let config = {
+    headers: {
+        'Authorization': `Bearer ${localStorage.getItem("tokenStudent")}`,
+    }
+}
 
-
-export const getQuest = (c, java, python) => {
+export const initTest = () => {
+    return async dispatch => {
+        axios.get('https://bdcoe-api.herokuapp.com/questions/', config).then(res => {
+            let responsedata = res.data;
+            dispatch(getQuestion(responsedata.data));
+            dispatch(baseQuestion());
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+}
+export const baseQuestion = () => {
     return {
-        type: actionTypes.FETCH_QUESTION,
-        c: c,
-        java: java,
-        python: python
+        type: actionTypes.INIT_QUESTION,
     };
-};
+}
 
 
 export const getQuestion = (response) => {
@@ -34,11 +46,17 @@ export const getQuestion = (response) => {
             }
         }// end of for loop
         dispatch(getQuest(c, java, python));
-       
     }
-
 }
 
+export const getQuest = (c, java, python) => {
+    return {
+        type: actionTypes.FETCH_QUESTION,
+        c: c,
+        java: java,
+        python: python
+    };
+};
 
 export const quesChanger = (payload) => {
     return {
@@ -47,56 +65,27 @@ export const quesChanger = (payload) => {
     }
 }
 
-export const baseQuestion = () => {
-    return {
-        type: actionTypes.INIT_QUESTION,
-    };
-}
 
-export const initTest = () => {
-    return async dispatch => {
-        let config = {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem("tokenStudent")}`,
-            }
+export const ansSubmiter = (response) => {
+    return dispatch => {
+        console.log(response)
+        let data = {
+            "questionNo": response.questionNo,
+            "questionType": response.questionType,
+            "correctOption": response.correctOption
         }
-        // await setTimeout(() => {
-        // 
-        //     console.log('hello');
-        // }, 10000)
-        axios.get('https://bdcoe-api.herokuapp.com/questions/', config).then(res => {
-            // console.log(res.data);
-            let responsedata = res.data;
-            console.log(responsedata.data)
-            dispatch(getQuestion(responsedata.data));
-            dispatch(baseQuestion());
-        }).catch(err => {
-            console.log(err);
-        })
-
-
+        axios.post('https://bdcoe-api.herokuapp.com/response/', data, config)
+            .then(res => {
+                if (res.data.response === "successfully saved ")
+                {
+                    console.log('done')
+                }else{
+                    console.log('try again')
+                }
+            })
+            .catch(err => {
+                console.log('try again');
+            })
     }
-    // fetch the question
-    // slip the question in sections
-    // save the cuurent question
 }
 
-// export const fetchOrders = () => {
-//     return dispatch => {
-//         dispatch(fetchOrdersStart());
-//         axios.get( '/orders.json' )
-//             .then( res => {
-//                 const fetchedOrders = [];
-//                 for ( let key in res.data ) {
-//                     fetchedOrders.push( {
-//                         ...res.data[key],
-//                         id: key
-//                     } );
-//                 }
-//                 dispatch(fetchOrdersSuccess(fetchedOrders));
-//             } )
-//             .catch( err => {
-//                 dispatch(fetchOrdersFail(err));
-//             } );
-//     };
-// }

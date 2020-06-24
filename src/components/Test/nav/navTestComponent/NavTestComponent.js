@@ -9,7 +9,7 @@ class NavTestComponent extends Component {
         redirect: null
     }
     componentDidMount() {
-        var hours = 0;
+        var hours = 5;
         var minutes = 5;
         var seconds = 5;
 

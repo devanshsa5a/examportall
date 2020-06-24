@@ -25,6 +25,8 @@ const reducer = (state = initialState, action) => {
                 currentQuestionOption2: action.payload.Option2,
                 currentQuestionOption3: action.payload.Option3,
                 currentQuestionOption4: action.payload.Option4,
+                currentQuestionNo: action.payload.QuestionNo.toString(),
+                currentQuestionType: action.payload.QuestionType
             };
         default:
             return state;

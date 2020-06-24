@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import React from 'react'
 const ButtonUi = (props) => {
     return (
@@ -6,8 +6,8 @@ const ButtonUi = (props) => {
     )
 }
 
-ButtonUi.propTypes = {
-    clicked: PropTypes.func,
-    name: PropTypes.string
-}
+// ButtonUi.propTypes = {
+//     clicked: PropTypes.func,
+//     name: PropTypes.string
+// }
 export default ButtonUi;
