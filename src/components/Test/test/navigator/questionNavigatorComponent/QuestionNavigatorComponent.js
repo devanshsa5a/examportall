@@ -8,7 +8,7 @@ import * as getActions from '../../../../../store/action/getQuestion'
 
 class QuestionNavigator extends Component {
 
-    questionChanger = (quesDetail) => {
+    questionChanger = (quesDetail, index) => {
         let payload = {
             'Description': quesDetail.questionDesc,
             'Option1': quesDetail.questionOptions[0],
@@ -18,6 +18,7 @@ class QuestionNavigator extends Component {
             'QuestionType': quesDetail.questionType,
             'QuestionNo': quesDetail.questionNo,
             'QuestionCode': quesDetail.questionCode,
+            'currentIndex': index
         }
         this.props.onButton(payload);
     }
@@ -26,18 +27,18 @@ class QuestionNavigator extends Component {
         let java = null;
         let python = null;
         if (this.props.c !== null) {
-            c = this.props.c.map((ques) => {
-                return <Button key={ques.key} name={ques.name} clicked={() => this.questionChanger(ques.funcInput)} />
+            c = this.props.c.map((ques, index) => {
+                return <Button key={ques.key} name={ques.name} clicked={() => this.questionChanger(ques.funcInput, index)} />
             })
         }
         if (this.props.java) {
-            java = this.props.java.map((ques) => {
-                return <Button key={ques.key} name={ques.name} clicked={() => this.questionChanger(ques.funcInput)} />
+            java = this.props.java.map((ques, index) => {
+                return <Button key={ques.key} name={ques.name} clicked={() => this.questionChanger(ques.funcInput, index)} />
             })
         }
         if (this.props.python) {
-            python = this.props.python.map((ques) => {
-                return <Button key={ques.key} name={ques.name} clicked={() => this.questionChanger(ques.funcInput)} />
+            python = this.props.python.map((ques, index) => {
+                return <Button key={ques.key} name={ques.name} clicked={() => this.questionChanger(ques.funcInput, index)} />
             })
         }
         let content

@@ -41,7 +41,7 @@ export const getQuestion = (response) => {
             }
             else if (response[i].questionType === '2') {
                 java.push(btn);
-            } else {
+            } else if(response[i].questionType === '3') {
                 python.push(btn);
             }
         }// end of for loop

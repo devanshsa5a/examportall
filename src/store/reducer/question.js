@@ -9,7 +9,8 @@ const initialState = {
     currentQuestionType: null,
     currentQuestionNo: null,
     currentQuestionCode: null,
-    msg: null
+    msg: null,
+    index: null,
 };
 
 
@@ -30,7 +31,8 @@ const reducer = (state = initialState, action) => {
                 currentQuestionNo: action.payload.QuestionNo.toString(),
                 currentQuestionType: action.payload.QuestionType,
                 currentQuestionCode: action.payload.QuestionCode,
-                msg: null
+                msg: null,
+                index: action.payload.currentIndex
             };
         case actionTypes.RES_FINAL:
             return {

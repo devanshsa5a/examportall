@@ -25,6 +25,78 @@ class QuestionComponent extends Component {
     ansHandler = () => {
         this.props.ansSubmitter(this.state)
     }
+    nextHandler = () => {
+        let index = this.props.index + 1;
+        let questionType = this.props.questionType;
+        // console.log('next handler clicked', questionType);
+
+        if (questionType === '1') {
+            let data = this.props.c;
+            let len = data.length;
+            // console.log(index)
+            if (index >= len) {
+                console.log('already last')
+            } else {
+                let d = data[index].funcInput;
+                let payload = {
+                    'Description': d.questionDesc,
+                    'Option1': d.questionOptions[0],
+                    'Option2': d.questionOptions[1],
+                    'Option3': d.questionOptions[2],
+                    'Option4': d.questionOptions[3],
+                    'QuestionType': d.questionType,
+                    'QuestionNo': d.questionNo,
+                    'QuestionCode': d.questionCode,
+                    'currentIndex': index
+                }
+                this.props.onButton(payload);
+            }
+        }
+        if (questionType === '2') {
+            let data = this.props.java;
+            let len = data.length;
+            // console.log(index)
+            if (index >= len) {
+                console.log('already last')
+            } else {
+                let d = data[index].funcInput;
+                let payload = {
+                    'Description': d.questionDesc,
+                    'Option1': d.questionOptions[0],
+                    'Option2': d.questionOptions[1],
+                    'Option3': d.questionOptions[2],
+                    'Option4': d.questionOptions[3],
+                    'QuestionType': d.questionType,
+                    'QuestionNo': d.questionNo,
+                    'QuestionCode': d.questionCode,
+                    'currentIndex': index
+                }
+                this.props.onButton(payload);
+            }
+        }
+        if (questionType === '3') {
+            let data = this.props.python;
+            let len = data.length;
+            // console.log(index)
+            if (index >= len) {
+                console.log('already last')
+            } else {
+                let d = data[index].funcInput;
+                let payload = {
+                    'Description': d.questionDesc,
+                    'Option1': d.questionOptions[0],
+                    'Option2': d.questionOptions[1],
+                    'Option3': d.questionOptions[2],
+                    'Option4': d.questionOptions[3],
+                    'QuestionType': d.questionType,
+                    'QuestionNo': d.questionNo,
+                    'QuestionCode': d.questionCode,
+                    'currentIndex': index
+                }
+                this.props.onButton(payload);
+            }
+        }
+    }
 
     render() {
         let content
@@ -47,7 +119,9 @@ class QuestionComponent extends Component {
                 <br />
                 <Button name='Submit this Answer' clicked={this.ansHandler} />
                 <button>Save For Later</button>
-                <button>Clear ans</button> </div>)
+                <button>Clear ans</button>
+                <button onClick={this.nextHandler}>Next </button></div>
+            )
         }
 
         return (
@@ -74,14 +148,19 @@ const mapStateToProps = state => {
         questionType: state.quesNo.currentQuestionType,
         questionNo: state.quesNo.currentQuestionNo,
         msg: state.quesNo.msg,
-        code: state.quesNo.currentQuestionCode
+        code: state.quesNo.currentQuestionCode,
+        index: state.quesNo.index,
+        c: state.questBase.c,
+        java: state.questBase.java,
+        python: state.questBase.python,
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onInnit: () => dispatch(getActions.initTest()),
-        ansSubmitter: (response) => dispatch(getActions.ansSubmiter(response))
+        ansSubmitter: (response) => dispatch(getActions.ansSubmiter(response)),
+        onButton: (payload) => dispatch(getActions.quesChanger(payload)),
     };
 };
 
