@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/examportall/static/css/main.3bdb3567.chunk.css",
+    "main.js": "/examportall/static/js/main.d48bbd6c.chunk.js",
+    "main.js.map": "/examportall/static/js/main.d48bbd6c.chunk.js.map",
+    "runtime-main.js": "/examportall/static/js/runtime-main.2a6ac562.js",
+    "runtime-main.js.map": "/examportall/static/js/runtime-main.2a6ac562.js.map",
+    "static/js/2.c559d109.chunk.js": "/examportall/static/js/2.c559d109.chunk.js",
+    "static/js/2.c559d109.chunk.js.map": "/examportall/static/js/2.c559d109.chunk.js.map",
+    "index.html": "/examportall/index.html",
+    "precache-manifest.a2cb660a6db925e796f6a4d1a18f4de8.js": "/examportall/precache-manifest.a2cb660a6db925e796f6a4d1a18f4de8.js",
+    "service-worker.js": "/examportall/service-worker.js",
+    "static/css/main.3bdb3567.chunk.css.map": "/examportall/static/css/main.3bdb3567.chunk.css.map",
+    "static/js/2.c559d109.chunk.js.LICENSE.txt": "/examportall/static/js/2.c559d109.chunk.js.LICENSE.txt",
+    "static/media/insta.png": "/examportall/static/media/insta.c5ad0581.png",
+    "static/media/logo.png": "/examportall/static/media/logo.c6a29331.png",
+    "static/media/logo1.png": "/examportall/static/media/logo1.086936c9.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2a6ac562.js",
+    "static/js/2.c559d109.chunk.js",
+    "static/css/main.3bdb3567.chunk.css",
+    "static/js/main.d48bbd6c.chunk.js"
+  ]
+}
