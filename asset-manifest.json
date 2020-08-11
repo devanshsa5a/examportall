@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.3bdb3567.chunk.css",
-    "main.js": "/static/js/main.2653b6f8.chunk.js",
-    "main.js.map": "/static/js/main.2653b6f8.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.d67d11c1.js",
-    "runtime-main.js.map": "/static/js/runtime-main.d67d11c1.js.map",
-    "static/js/2.c559d109.chunk.js": "/static/js/2.c559d109.chunk.js",
-    "static/js/2.c559d109.chunk.js.map": "/static/js/2.c559d109.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.3b09f594ad56d17fa33f74b97f22569d.js": "/precache-manifest.3b09f594ad56d17fa33f74b97f22569d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.3bdb3567.chunk.css.map": "/static/css/main.3bdb3567.chunk.css.map",
-    "static/js/2.c559d109.chunk.js.LICENSE.txt": "/static/js/2.c559d109.chunk.js.LICENSE.txt",
-    "static/media/insta.png": "/static/media/insta.c5ad0581.png",
-    "static/media/logo.png": "/static/media/logo.c6a29331.png",
-    "static/media/logo1.png": "/static/media/logo1.086936c9.png"
+    "main.css": "/examportall/static/css/main.3bdb3567.chunk.css",
+    "main.js": "/examportall/static/js/main.fd4e4229.chunk.js",
+    "main.js.map": "/examportall/static/js/main.fd4e4229.chunk.js.map",
+    "runtime-main.js": "/examportall/static/js/runtime-main.2a6ac562.js",
+    "runtime-main.js.map": "/examportall/static/js/runtime-main.2a6ac562.js.map",
+    "static/js/2.c559d109.chunk.js": "/examportall/static/js/2.c559d109.chunk.js",
+    "static/js/2.c559d109.chunk.js.map": "/examportall/static/js/2.c559d109.chunk.js.map",
+    "index.html": "/examportall/index.html",
+    "precache-manifest.9a9f496aa2ae2d700a4a0dbfc73ae76f.js": "/examportall/precache-manifest.9a9f496aa2ae2d700a4a0dbfc73ae76f.js",
+    "service-worker.js": "/examportall/service-worker.js",
+    "static/css/main.3bdb3567.chunk.css.map": "/examportall/static/css/main.3bdb3567.chunk.css.map",
+    "static/js/2.c559d109.chunk.js.LICENSE.txt": "/examportall/static/js/2.c559d109.chunk.js.LICENSE.txt",
+    "static/media/insta.png": "/examportall/static/media/insta.c5ad0581.png",
+    "static/media/logo.png": "/examportall/static/media/logo.c6a29331.png",
+    "static/media/logo1.png": "/examportall/static/media/logo1.086936c9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.d67d11c1.js",
+    "static/js/runtime-main.2a6ac562.js",
     "static/js/2.c559d109.chunk.js",
     "static/css/main.3bdb3567.chunk.css",
-    "static/js/main.2653b6f8.chunk.js"
+    "static/js/main.fd4e4229.chunk.js"
   ]
 }
