@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/examportall/static/css/main.08bc85db.chunk.css",
-    "main.js": "/examportall/static/js/main.e92edbef.chunk.js",
-    "main.js.map": "/examportall/static/js/main.e92edbef.chunk.js.map",
-    "runtime-main.js": "/examportall/static/js/runtime-main.2a6ac562.js",
-    "runtime-main.js.map": "/examportall/static/js/runtime-main.2a6ac562.js.map",
-    "static/js/2.bff3129f.chunk.js": "/examportall/static/js/2.bff3129f.chunk.js",
-    "static/js/2.bff3129f.chunk.js.map": "/examportall/static/js/2.bff3129f.chunk.js.map",
+    "main.css": "/examportall/static/css/main.45c1e2d3.chunk.css",
+    "main.js": "/examportall/static/js/main.5a6422e0.chunk.js",
+    "main.js.map": "/examportall/static/js/main.5a6422e0.chunk.js.map",
+    "runtime-main.js": "/examportall/static/js/runtime-main.26ace5bf.js",
+    "runtime-main.js.map": "/examportall/static/js/runtime-main.26ace5bf.js.map",
+    "static/js/2.d5d08945.chunk.js": "/examportall/static/js/2.d5d08945.chunk.js",
+    "static/js/2.d5d08945.chunk.js.map": "/examportall/static/js/2.d5d08945.chunk.js.map",
     "index.html": "/examportall/index.html",
-    "precache-manifest.eddf95e22b48fc68079d88433d397cdc.js": "/examportall/precache-manifest.eddf95e22b48fc68079d88433d397cdc.js",
+    "precache-manifest.fbadec423d3d3e2e9a2b6bb31abe4be1.js": "/examportall/precache-manifest.fbadec423d3d3e2e9a2b6bb31abe4be1.js",
     "service-worker.js": "/examportall/service-worker.js",
-    "static/css/main.08bc85db.chunk.css.map": "/examportall/static/css/main.08bc85db.chunk.css.map",
-    "static/js/2.bff3129f.chunk.js.LICENSE.txt": "/examportall/static/js/2.bff3129f.chunk.js.LICENSE.txt",
+    "static/css/main.45c1e2d3.chunk.css.map": "/examportall/static/css/main.45c1e2d3.chunk.css.map",
+    "static/js/2.d5d08945.chunk.js.LICENSE.txt": "/examportall/static/js/2.d5d08945.chunk.js.LICENSE.txt",
+    "static/media/back.jpg": "/examportall/static/media/back.666020c8.jpg",
     "static/media/insta.png": "/examportall/static/media/insta.c5ad0581.png",
     "static/media/logo.png": "/examportall/static/media/logo.c6a29331.png",
     "static/media/logo1.png": "/examportall/static/media/logo1.086936c9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.2a6ac562.js",
-    "static/js/2.bff3129f.chunk.js",
-    "static/css/main.08bc85db.chunk.css",
-    "static/js/main.e92edbef.chunk.js"
+    "static/js/runtime-main.26ace5bf.js",
+    "static/js/2.d5d08945.chunk.js",
+    "static/css/main.45c1e2d3.chunk.css",
+    "static/js/main.5a6422e0.chunk.js"
   ]
 }
